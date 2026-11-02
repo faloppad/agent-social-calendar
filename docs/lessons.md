@@ -22,7 +22,7 @@ The best performer in the original setup was a batch of customer review screensh
 
 ## Use AI only where it helps
 
-Claude writes the posts and decides when they go out, based on cadence. Publishing is a plain script. A script is cheaper, faster, and does the same thing every time. Mode B moves the schedule into Upload-Post, but the rule still applies: if a script can do it, don't spend tokens on it.
+Claude writes the posts and decides when they go out, based on cadence. Publishing is a plain script. A script is cheaper, faster, and does the same thing every time. The first version used a daily n8n workflow for publishing. Upload-Post's own scheduler made it redundant, so now a small script hands approved posts over and Upload-Post does the timing. The rule still applies: if a script can do it, don't spend tokens on it.
 
 ## Don't connect to the networks yourself
 

@@ -1,6 +1,6 @@
 # Data model and shared conventions
 
-Every part of the system follows this file: the Claude skill, the Python scripts, the n8n workflow and the templates. If you rename a field here, rename it everywhere.
+Every part of the system follows this file: the Claude skills, the Python scripts and the templates. If you rename a field here, rename it everywhere.
 
 ## Repository layout
 
@@ -12,7 +12,7 @@ agent-social-calendar/
 ├── skills/
 │   ├── social-calendar/          # main skill: turn content into scheduled posts
 │   │   ├── SKILL.md
-│   │   ├── references/           # airtable.md, post-types.md, direct-publishing.md, visuals.md
+│   │   ├── references/           # airtable.md, post-types.md, publishing.md, visuals.md
 │   │   └── scripts/              # stdlib-only Python helpers
 │   └── social-calendar-review/   # weekly feedback loop (run as a Claude routine)
 │       └── SKILL.md
@@ -22,15 +22,12 @@ agent-social-calendar/
 ├── examples/brightloop/          # fully worked fictional company
 │   ├── strategy.md
 │   └── channels/*.md
-├── n8n/
-│   ├── daily-publisher.json      # importable workflow (publishing mode A)
-│   └── README.md
 ├── scripts/
 │   └── setup_airtable.py         # creates the base tables via the Airtable API
 └── docs/
     ├── data-model.md             # this file
-    ├── setup.md                  # step by step: Airtable, Upload-Post, n8n or direct mode, routines
-    ├── publishing-modes.md       # mode A (n8n) vs mode B (Claude schedules directly)
+    ├── setup.md                  # step by step: Airtable, Upload-Post, skills, publishing, routines
+    ├── publishing.md             # how approved posts reach Upload-Post's scheduler
     ├── feedback-loop.md
     └── lessons.md                # field notes from running it
 ```
@@ -41,9 +38,7 @@ agent-social-calendar/
 2. **Channel layer**: `channels/<channel-slug>.md`. One file per account (company LinkedIn, founder X, an employee's LinkedIn...). Voice, goals, cadence, formats, do/don't, example posts. Plain text so that teammates can edit their own file (keeping them in a shared Google Drive folder works).
 3. **Generation layer**: the `social-calendar` skill. You drop in a piece of content (a screenshot, a feature note, a podcast clip, a review, an event photo). Claude reads the strategy and channel files, checks the calendar for cadence gaps and duplicates, writes posts for each relevant channel and spreads them over days or weeks.
 4. **Calendar layer**: Airtable base `Social Calendar`. The single source of truth for what goes out when. People approve posts here.
-5. **Publishing layer**: plain scripts, with no AI at publish time.
-   - **Mode A (n8n)**: n8n runs once a day, finds approved posts due today, sends them through Upload-Post, updates Airtable and pings Slack.
-   - **Mode B (direct)**: Claude, or the `publish_approved.py` script, pushes approved posts to Upload-Post with `scheduled_date` as soon as they're approved. Upload-Post holds the schedule, so there's no n8n. It costs more tokens if Claude does it, and nothing extra if the script does it.
+5. **Publishing layer**: `publish_approved.py` hands approved posts to Upload-Post with a `scheduled_date`, and Upload-Post's scheduler publishes them. Claude runs the script on request, or a routine or cron runs it a few times a day. It writes `Scheduled`, `Live` or `Failed` back to Airtable. No AI is needed at publish time.
 6. **Feedback loop** (optional): the `social-calendar-review` skill runs weekly as a Claude routine. It checks published posts against the strategy, pulls metrics where available and proposes edits to strategy and channel files.
 
 ## Airtable base: `Social Calendar`
@@ -74,7 +69,7 @@ agent-social-calendar/
 | `Needs media` | Text ready, image or video missing (e.g. Instagram) | agent |
 | `To approve` | Ready for the channel owner to review | agent |
 | `Approved` | Owner approved, publish on `Scheduled for` | human (or agent if the owner opted in) |
-| `Scheduled` | Handed to Upload-Post but not confirmed live yet: a `scheduled_date` job (mode B, or n8n with `usePostTime`) or a long video that Upload-Post processes in the background. `--reconcile` flips it to `Live` or `Failed` | publisher |
+| `Scheduled` | Handed to Upload-Post but not confirmed live yet: a `scheduled_date` job, or a long video that Upload-Post processes in the background. `--reconcile` flips it to `Live` or `Failed` | publisher |
 | `Live` | Published | publisher |
 | `Manual` | Platform not supported by the API (e.g. Substack). A Slack ping asks a human to post it | publisher |
 | `Failed` | Publishing failed, see `Error` | publisher |
@@ -82,7 +77,7 @@ agent-social-calendar/
 
 ### Table `Channels`
 
-The routing table that both n8n and the scripts read. Strategy and voice live in the markdown channel files, not here.
+The routing table the scripts read. Strategy and voice live in the markdown channel files, not here.
 
 | Field | Type | Notes |
 |---|---|---|
@@ -105,7 +100,7 @@ The publisher derives the type from `Media` and doesn't store it:
 
 Instagram, TikTok, YouTube (video only) and Pinterest reject text-only posts. The skill never marks a text-only post for those platforms as `To approve`; it uses `Needs media`.
 
-## Publishing rules shared by n8n and the scripts
+## Publishing rules
 
 - **Due** means `Status = Approved` and `Scheduled for` is today or earlier, in the channel's timezone. A missed run catches up the next day.
 - Channels with `Active` off are skipped and their posts stay `Approved`.

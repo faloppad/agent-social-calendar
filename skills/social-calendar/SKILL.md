@@ -5,7 +5,7 @@ description: Turn a piece of content (a feature note, screenshot, news link, pod
 
 # Social calendar
 
-Turn one piece of content into posts for many channels and put them in the Airtable calendar for people to approve. Publishing happens later through a plain script (n8n in mode A, `publish_approved.py` or Upload-Post's own scheduler in mode B), not through you.
+Turn one piece of content into posts for many channels and put them in the Airtable calendar for people to approve. Publishing happens through `scripts/publish_approved.py`, which hands approved posts to Upload-Post's scheduler. You run it only when the user asks.
 
 Field names, status values and env vars come from `docs/data-model.md` in the repo. Don't rename anything. Script paths below are relative to this skill's folder.
 
@@ -126,7 +126,7 @@ Under it, list in plain sentences: channels you skipped and why, posts you pushe
 ## Other requests
 
 - **"Add the image to these posts."** Run `python3 scripts/airtable_calendar.py attach <record_id> <file or URL>`. A post in `Needs media` moves to `To approve` automatically.
-- **"Move this post", "reject that one".** Run `update <record_id> --set "Scheduled for=2026-11-20"` or `--set Status=Rejected`. If the post is already `Scheduled` (mode B), run `python3 scripts/publish_approved.py --sync` afterwards so Upload-Post's copy changes too.
+- **"Move this post", "reject that one".** Run `update <record_id> --set "Scheduled for=2026-11-20"` or `--set Status=Rejected`. If the post is already `Scheduled`, run `python3 scripts/publish_approved.py --sync` afterwards so Upload-Post's copy changes too.
 - **"What's going out this week?"** Run `list --from today --to +7` and summarise by channel and day.
 - **Changes to strategy or voice.** Edit the markdown files, not Airtable. The weekly `social-calendar-review` skill proposes these edits.
 
@@ -136,9 +136,12 @@ Only when the user says so explicitly ("approve mine", "these can go straight ou
 
 ## Handing off to publishing
 
-Approved posts go out in one of two ways. Ask the user once which one they use if you can't tell from the repo's setup notes.
+When the user asks to schedule approved posts ("schedule everything that's approved", "push these out"):
 
-- **Mode A (n8n).** Nothing to do. The daily n8n run publishes `Approved` posts whose `Scheduled for` is today or earlier.
-- **Mode B (direct).** Once posts are `Approved`, run `python3 scripts/publish_approved.py --mode schedule --dry-run`, show the output, then run it without `--dry-run`. Upload-Post holds the schedule and the status becomes `Scheduled`. Read `references/direct-publishing.md` for rescheduling, cancelling and reconciling. Prefer the script over making the Upload-Post calls yourself, because the script costs no tokens per post.
+1. Run `python3 scripts/publish_approved.py --sync --reconcile --mode schedule --dry-run` and show what it would send: channel, date and time, media type, first line of text.
+2. After the user confirms, run it without `--dry-run`. Upload-Post holds the schedule and the posts become `Scheduled`.
+3. If any approved post's slot has already passed, mention it and offer `--mode now`.
+
+The user may also have a routine or cron running the script, in which case approved posts get scheduled without you. Read `references/publishing.md` for rescheduling, cancelling, reconciling and the full field mapping. Prefer the script over making the Upload-Post calls yourself, because the script costs no tokens per post.
 
 Never publish or schedule anything the user hasn't asked for in this conversation. Writing records with `To approve` is the normal end of this skill.

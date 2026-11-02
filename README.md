@@ -2,7 +2,7 @@
 
 Run a dozen social media accounts in a couple of hours a month. You give your agent a screenshot, a feature note, a podcast clip or a customer review. It writes posts for every channel in that channel's voice, fits them into the calendar and puts them in Airtable for approval. A plain script publishes what's approved.
 
-This is the system [Daniel Faloppa](https://github.com/faloppad) uses to run about 14 accounts for [Equidam](https://www.equidam.com) and his other companies: company pages, his own profiles, and his co-founders' and salespeople's profiles. He walked through it live at an AI meetup in Rotterdam. This repo is the open version: Claude skills, scripts, an n8n workflow, templates and a full worked example, so you can set it up with your own agent, your own Airtable and your own channels.
+This is the system [Daniel Faloppa](https://github.com/faloppad) uses to run about 14 accounts for [Equidam](https://www.equidam.com) and his other companies: company pages, his own profiles, and his co-founders' and salespeople's profiles. He walked through it live at an AI meetup in Rotterdam. This repo is the open version: Claude skills, scripts, templates and a full worked example, so you can set it up with your own agent, your own Airtable and your own channels.
 
 ```mermaid
 flowchart TD
@@ -16,11 +16,8 @@ flowchart TD
   SK["Claude + social-calendar skill<br/>writes posts, picks dates, checks cadence and duplicates"] --> AT
   AT[("Airtable: Social Calendar<br/>To approve → Approved")]
   OW[Each owner approves<br/>their own posts] --> AT
-  AT --> PUB{Publishing}
-  PUB -->|Mode A| N8N[n8n, daily, no AI]
-  PUB -->|Mode B| DIR[Claude or script schedules<br/>directly in Upload-Post]
-  N8N --> UP[Upload-Post API]
-  DIR --> UP
+  AT -->|Approved| PUB["publish_approved.py<br/>run by Claude, a routine or cron"]
+  PUB -->|scheduled_date| UP[Upload-Post scheduler]
   UP --> NET[LinkedIn · X · Instagram · Facebook · Threads · TikTok · YouTube · ...]
   UP -.->|Live / Failed + link| AT
   AT --> REV[Weekly Claude routine<br/>social-calendar-review]
@@ -32,9 +29,7 @@ flowchart TD
 1. **Strategy layer.** `strategy.md` holds goals, audiences, OKRs, content pillars and global rules. Each account gets its own `channels/<name>.md` with voice, goals, cadence, formats and example posts. They're plain text files. Keep them in a shared Drive folder and each teammate can edit their own.
 2. **Generation.** You drop content into Claude: "here's the new export feature, schedule it". The `social-calendar` skill reads the strategy and channel files and checks what's already planned. If a channel is short of its 5 posts this week, a post goes on Friday. If there's too much news this week, it moves to next week. It writes one post per channel per date and creates them in Airtable.
 3. **Approval.** Airtable is the shared calendar. Each person approves posts on their own profile. Nobody posts as someone else without their OK.
-4. **Publishing, with no AI involved.** Approved posts go out through [Upload-Post](https://www.upload-post.com), which keeps the connections to every network alive. You pick one of two ways to drive it:
-   - **Mode A, n8n:** a daily workflow that publishes what's due, updates Airtable and posts a Slack summary. This is the original setup. [`n8n/`](n8n/)
-   - **Mode B, direct:** Claude, or `publish_approved.py`, hands approved posts to Upload-Post with a `scheduled_date`, and Upload-Post publishes them on time. No n8n. **If you have the tokens for it, this is the better option:** one less service to run, and you can say "schedule everything that's approved" in the same conversation. [`docs/publishing-modes.md`](docs/publishing-modes.md)
+4. **Publishing.** Approved posts go to [Upload-Post](https://www.upload-post.com) with a `scheduled_date`, and Upload-Post's own scheduler publishes them on time. It also keeps the connections to every network alive. The hand-off is a plain script: Claude runs it when you say "schedule everything that's approved", or a routine or cron runs it a few times a day. Airtable gets the result back: `Scheduled`, then `Live` with the link, or `Failed` with the reason. [`docs/publishing.md`](docs/publishing.md)
 5. **Feedback loop.** A weekly Claude routine checks last week's posts against the strategy, reads metrics where it can and proposes edits to the channel files. [`docs/feedback-loop.md`](docs/feedback-loop.md)
 
 ## What one piece of content turns into
@@ -73,23 +68,21 @@ The full walkthrough is in [`docs/setup.md`](docs/setup.md). The scripts use onl
 |---|---|---|
 | Claude Code (or another agent that loads `SKILL.md` files and runs Python) | Writes and schedules posts | Your plan |
 | Airtable | Shared calendar and approvals | Free to start. You'll outgrow the free record limit within months |
-| Upload-Post | Connections to every network, plus its own scheduler for mode B | Depends on the number of accounts. Daniel pays about 60/month for 14 |
-| n8n | Mode A only | Free self-hosted |
+| Upload-Post | Connections to every network, and the scheduler that publishes on time | Depends on the number of accounts. Daniel pays about 60/month for 14 |
 | Slack webhook | Daily summary, manual-post pings | Free, optional |
 
 ## Repo map
 
 ```
 skills/social-calendar/          main skill: content → posts → Airtable
-  references/                    airtable, post types, visuals, direct publishing (mode B)
+  references/                    airtable, post types, visuals, publishing
   scripts/airtable_calendar.py   list / create / update / attach / check-duplicates
-  scripts/publish_approved.py    publisher for both modes (--mode now | schedule, --sync, --reconcile)
+  scripts/publish_approved.py    schedules approved posts in Upload-Post (--mode schedule | now, --sync, --reconcile)
 skills/social-calendar-review/   weekly feedback loop, run as a Claude routine
 scripts/setup_airtable.py        creates the Airtable tables
-n8n/daily-publisher.json         importable n8n workflow (mode A)
 templates/                       blank strategy + channel files
 examples/brightloop/             complete fictional example
-docs/                            setup, data model, publishing modes, feedback loop, field notes
+docs/                            setup, data model, publishing, feedback loop, field notes
 ```
 
 The data model (tables, fields, status values) is in [`docs/data-model.md`](docs/data-model.md). Every part of the repo follows it.
@@ -105,7 +98,7 @@ The short version of [`docs/lessons.md`](docs/lessons.md):
 
 ## Status
 
-The skills, scripts and n8n workflow are tested offline against mocks. The original n8n workflow (screenshot in [`docs/img/`](docs/img/)) has run in production for months. This generic rebuild hasn't been run against live accounts yet. Run `--dry-run` first and [open an issue](https://github.com/faloppad/agent-social-calendar/issues) if something breaks.
+The skills and scripts are tested offline against mocked Airtable and Upload-Post APIs, but haven't been run against live accounts yet. The system itself has run Equidam's channels in production for months (on an earlier n8n-based publisher). Run `--dry-run` first and [open an issue](https://github.com/faloppad/agent-social-calendar/issues) if something breaks.
 
 ## About
 

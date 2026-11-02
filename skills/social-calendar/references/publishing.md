@@ -1,8 +1,8 @@
-# Direct publishing (mode B)
+# Publishing
 
-In mode B there is no n8n. As soon as a post is `Approved`, it goes to Upload-Post with a `scheduled_date`, and Upload-Post publishes it at the right time. Airtable stays the source of truth. The post moves to `Scheduled`, then to `Live` or `Failed`.
+Once a post is `Approved`, it goes to Upload-Post with a `scheduled_date`, and Upload-Post publishes it at the right time. Airtable stays the source of truth. The post moves to `Scheduled`, then to `Live` or `Failed`.
 
-Mode A (n8n once a day) and mode B can share a base, but don't run both for the same channels. Pick one per setup.
+Run only one publisher per base (one routine or one cron entry), so two runs don't pick up the same `Approved` posts at once.
 
 ## Who makes the calls
 
@@ -84,7 +84,7 @@ Upload-Post accepts public URLs in `photos[]` and `video`, as well as file uploa
 | Upload-Post response | Airtable update |
 |---|---|
 | `202` with `job_id` | `Status` = `Scheduled`, `Upload-Post ID` = job_id, `Error` cleared |
-| `200` with `results.<platform>.success` true (mode now) | `Status` = `Live`, `Posted at` = now, `Live link` = the result's `url`, `Upload-Post ID` = `request_id` if returned |
+| `200` with `results.<platform>.success` true (`--mode now`) | `Status` = `Live`, `Posted at` = now, `Live link` = the result's `url`, `Upload-Post ID` = `request_id` if returned |
 | `200` with `request_id` and no results (Upload-Post went async, common for long videos) | `Status` = `Scheduled`, `Upload-Post ID` = request_id, a note in `Error`. `--reconcile` finishes it |
 | Error, or `success` false | `Status` = `Failed`, message in `Error` |
 | `429` | `Failed` with a quota message, and the run stops |

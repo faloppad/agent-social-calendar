@@ -5,7 +5,7 @@ Stdlib only (Python 3.9+). Nothing is sent unless you pass --mode, --reconcile
 or --sync, and --dry-run prints every API call instead of sending it.
 
     --mode now        Publish Approved posts whose 'Scheduled for' is today or
-                      earlier in the channel's timezone (what the n8n flow does).
+                      earlier in the channel's timezone.
     --mode schedule   Hand Approved posts with a future slot to Upload-Post with
                       scheduled_date + timezone. Status becomes Scheduled.
     --sync            Push Airtable edits to jobs still waiting in Upload-Post:
@@ -666,8 +666,8 @@ def main() -> None:
                     "Nothing is sent unless you pass --mode, --reconcile or --sync.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="examples:\n"
-               "  publish_approved.py --mode now --dry-run      # what the daily n8n run would do\n"
-               "  publish_approved.py --mode schedule           # mode B: queue future posts\n"
+               "  publish_approved.py --mode now --dry-run      # what a daily catch-up run would send\n"
+               "  publish_approved.py --mode schedule           # queue approved posts in Upload-Post\n"
                "  publish_approved.py --sync --reconcile        # push edits, then mark Live/Failed")
     ap.add_argument("--mode", choices=["now", "schedule"],
                     help="now: publish due posts. schedule: hand future posts to Upload-Post")

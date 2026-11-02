@@ -5,7 +5,6 @@ About an hour end to end, most of it clicking through Upload-Post connections. Y
 - **Claude Code** (CLI or desktop) or another agent that can read files, run Python 3.9+ and load a `SKILL.md`.
 - **Airtable**: the free plan works to start.
 - **Upload-Post** ([upload-post.com](https://www.upload-post.com)): keeps the connections to every social network alive. Pricing depends on how many accounts you connect.
-- **n8n**: only for publishing mode A.
 - **Slack incoming webhook**: optional, for daily summaries and manual-post pings.
 
 ## 1. Get the repo
@@ -85,11 +84,9 @@ Smoke test:
 python3 skills/social-calendar/scripts/airtable_calendar.py channels
 ```
 
-## 6. Pick a publishing mode
+## 6. Publishing
 
-See [publishing-modes.md](publishing-modes.md). In short:
-- **Mode B (no n8n):** `publish_approved.py --mode schedule` or ask Claude to schedule approved posts. Better if you have the tokens.
-- **Mode A (n8n):** import [`n8n/daily-publisher.json`](../n8n/daily-publisher.json) and follow [`n8n/README.md`](../n8n/README.md).
+Approved posts are handed to Upload-Post's scheduler by `publish_approved.py`. Decide who runs it: Claude when you ask ("schedule everything that's approved"), a Claude routine, or cron. See [publishing.md](publishing.md).
 
 Test with a dry run first:
 
