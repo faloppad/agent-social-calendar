@@ -1,0 +1,146 @@
+Name,Status,Scheduled for,Channel,PostContent,Source,Campaign,Owner
+Ep 58 - episode out,Live,2026-10-28,Maya LinkedIn,"I spent an hour with Sam Okafor on The Ground Floor talking about how we raised our seed round.
+
+What we covered:
+- why 31 funds said no, and the one objection almost all of them had
+- how we got to our pre-money number and held it
+- what our customers told investors when they called them
+- why scheduling software for installers is a good business partly because nobody finds it exciting
+
+Sam asked what I'd do differently. Honest answer: start talking to investors three months earlier, and spend those months listening.
+
+Episode 58: https://thegroundfloor.example/58","The Ground Floor episode 58, released 2026-10-28. https://thegroundfloor.example/58",2026-10 Ground Floor Ep 58,maya@brightloop.example
+Ep 58 - episode out,Live,2026-10-28,Maya X,Went on The Ground Floor to talk about raising €1.6M for scheduling software for plumbers and heat pump installers. Not a sexy category. Turns out that helped. https://thegroundfloor.example/58,The Ground Floor episode 58. https://thegroundfloor.example/58,2026-10 Ground Floor Ep 58,maya@brightloop.example
+Ep 58 - clip 1 whiteboards,Live,2026-10-29,Brightloop LinkedIn,"Most of the installers we talk to still plan the week on a whiteboard. Maya explained why on The Ground Floor this week, and it's not because they're behind.
+
+A whiteboard is fast, everyone in the office can see it, and nobody needs a login. The trouble starts on Tuesday, when one job overruns and the board has to be redrawn while three technicians wait in their vans.
+
+That's the bit we built Brightloop for.
+
+Full episode: https://thegroundfloor.example/58","Clip 1 (04:10-05:25), The Ground Floor episode 58. https://thegroundfloor.example/58",2026-10 Ground Floor Ep 58,maya@brightloop.example
+Ep 58 - Substack round post,Manual,2026-10-29,Brightloop Substack,"How we raised €1.6M to sell software to plumbers
+
+We closed our seed round in September. Harbourline Ventures led it, with six angels, most of whom run or used to run installer businesses. Since the podcast came out a few people asked for the numbers, so here they are.
+
+We talked to 38 funds and 31 said no. 22 of them gave some version of the same reason: installers don't buy software. For the first ten meetings I argued with that, using the market slide every vertical SaaS company uses. It didn't work. From meeting eleven on, the first slide was our customer list with how long each one had been paying. Most were past 18 months.
+
+The pre-money was the hardest part. We had no idea what a fair number was, and every founder we asked gave us a different one. Before the first investor meeting we ran our valuation on Equidam (https://www.equidam.com) and used the report as our starting point. It came out at €6.4M. When Harbourline opened at €4.5M, we could walk through how we got to our number, and the conversation moved to the inputs: our churn assumption, how fast Germany would grow. We closed at €6M.
+
+The other thing that moved the round was customers. Every serious investor asked to call five or six of them. Every customer said yes, and two called the investor back with more questions. Jonas wrote about that part on LinkedIn.
+
+What I'd tell a founder starting a round now:
+1. Have your own number before anyone gives you one.
+2. Let investors call your customers early. It did more for us than the deck.
+3. Ask every fund that passes what would have made it a yes. About half will tell you.
+4. Budget four months, not two.
+
+What we're doing with the money: two engineers, a customer success lead, and a salesperson for Germany, where we have our first six customers.
+
+The full conversation with Sam Okafor is on The Ground Floor, episode 58: https://thegroundfloor.example/58
+
+Maya","Maya's notes on the round + The Ground Floor episode 58 transcript. https://thegroundfloor.example/58. Slack ping sent 2026-10-29 10:00, waiting for Maya to post.",2026-10 Ground Floor Ep 58,maya@brightloop.example
+Ep 58 - clip 1 whiteboards,Live,2026-10-30,Brightloop Instagram,"Whiteboards are great until Tuesday.
+
+Maya on The Ground Floor podcast, on why most installers still plan by hand and what breaks first. Full episode, link in bio.
+
+#installers #fieldservice #heatpumps #planning",Clip 1 (04:10-05:25) cut to 9:16 with captions. https://thegroundfloor.example/58,2026-10 Ground Floor Ep 58,maya@brightloop.example
+Ep 58 - customer calls (Jonas),Approved,2026-11-03,Jonas LinkedIn,"Maya's podcast is mostly about the money side of our seed round. Here's the part I saw from sales.
+
+Every investor who got serious asked to call customers. Not two. Usually five or six.
+
+I was nervous about that. You're asking someone who's on a roof by 7am to spend 20 minutes on the phone with a VC fund. Every single one said yes. Two of them called the investor back to ask more questions.
+
+That told me more about the product than any number in the deck.
+
+Thanks Ruud, Ellen, Kees, Martijn and the others. Coffee's on me next time I'm out your way.",The Ground Floor episode 58 (Maya mentions customer reference calls at 31:40) + Jonas's notes. https://thegroundfloor.example/58. All four customers named agreed to be thanked by first name.,2026-10 Ground Floor Ep 58,jonas@brightloop.example
+News - heat pump install waits,Approved,2026-11-04,Brightloop LinkedIn,"Field Service Weekly reports installers in the Netherlands are now quoting 6 to 9 weeks for a heat pump install.
+
+We see the same thing in our customers' schedules. The installs themselves aren't taking longer. What takes longer is everything around them: the survey visit, waiting on parts, a second trip because the first technician didn't have the right fitting.
+
+Customers of ours who book the survey and the install as one job, with the parts list attached, average 11 days less from first call to finished install.
+
+Waiting lists are partly a capacity problem and partly a planning one. The planning part can be fixed this month.","https://example.com/news/heat-pump-install-waits (Field Service Weekly, 2026-11-03), headline screenshot. 11-day figure: Brightloop query of survey+install jobs, Jun-Oct 2026",2026-11 News heat pump waits,maya@brightloop.example
+Ep 58 - clip 2 pre-money,Approved,2026-11-04,Maya LinkedIn,"The question I got most after the podcast: how did you decide on your valuation?
+
+Short version. We didn't guess, and we didn't let the first investor decide for us.
+
+Before any meetings I ran our numbers through Equidam and got a valuation report. It came out at €6.4M pre-money. I didn't treat that as the answer. I treated it as a number I could defend line by line.
+
+When our lead opened at €4.5M, that changed the conversation. Instead of me saying ""we think we're worth more"", we went through the inputs together. They disagreed with our churn assumption. We disagreed with their view of the German market. We landed at €6M.
+
+If you're raising for the first time, have your own number before anyone gives you one.
+
+The clip is from The Ground Floor, episode 58.","Clip 2 (18:05-19:30), The Ground Floor episode 58. https://thegroundfloor.example/58",2026-10 Ground Floor Ep 58,maya@brightloop.example
+Review - Dekker,Approved,2026-11-05,Brightloop LinkedIn,"Ruud runs Dekker Installatietechniek: 14 technicians, mostly heat pumps. He left us this review last week:
+
+""Our planner used to spend Monday morning rebuilding the week on a whiteboard. Now it takes 20 minutes and the guys see their jobs on their phone before they leave the house.""
+
+Monday mornings are the reason we started Brightloop, so this one went straight into the team chat.","Trustpilot review screenshot, Ruud Dekker (Dekker Installatietechniek), 5 stars, 2026-10-29. Ruud agreed by email on 2026-10-30 to be named.",2026-11 Review Dekker,maya@brightloop.example
+News - seed valuations,Approved,2026-11-05,Maya X,Headline today: European seed valuations flat for another quarter. Useful if you track the market. Says nothing about what your company is worth. Before our round I ran ours on Equidam so I had a number I could explain line by line. https://www.equidam.com,"https://example.com/news/eu-seed-valuations-q3 (headline screenshot, 2026-11-05). Auto-approved (Maya X opt-in).",2026-11 News seed valuations,maya@brightloop.example
+News - heat pump install waits,Approved,2026-11-06,Brightloop X,"6 to 9 weeks for a heat pump install in NL right now. In our customers' data most of that wait is survey visits, parts and second trips, not the install itself. A planning problem as much as a capacity one.","https://example.com/news/heat-pump-install-waits (Field Service Weekly, 2026-11-03), headline screenshot. 11-day figure: Brightloop query of survey+install jobs, Jun-Oct 2026",2026-11 News heat pump waits,maya@brightloop.example
+Review - Dekker,Needs media,2026-11-10,Brightloop Instagram,"Monday mornings at Dekker Installatietechniek used to mean rebuilding the week on a whiteboard. Now it takes 20 minutes.
+
+Thanks for the review, Ruud.
+
+#installers #heatpumps #fieldservice","Trustpilot review screenshot, Ruud Dekker (Dekker Installatietechniek), 5 stars, 2026-10-29. Ruud agreed by email on 2026-10-30 to be named. Needs a quote card, 1080x1350, green background: ""Monday morning used to mean rebuilding the week on a whiteboard. Now it takes 20 minutes."" Ruud Dekker, Dekker Installatietechniek.",2026-11 Review Dekker,maya@brightloop.example
+Feature - arrival texts,To approve,2026-11-11,Brightloop LinkedIn,"New in Brightloop: arrival texts.
+
+When a technician starts driving to a job, the customer gets a text with a 30-minute arrival window. If the job before runs over, the window updates and the customer gets a second text. No app for the customer to install, and nothing for the technician to do.
+
+We built it because planners kept telling us about the calls. ""Where is he?"" eats up to an hour a day for some of them.
+
+It's on for every account from today. You can edit the message under Settings > Messages.
+
+https://brightloop.example/changelog/arrival-texts?utm_source=linkedin&utm_medium=social&utm_campaign=2026-11-arrival-texts","Changelog entry 'Arrival texts' (Notion, 2026-11-09) + screen recording of the text arriving on a phone",2026-11 Arrival texts,maya@brightloop.example
+Feature - arrival texts,To approve,2026-11-11,Brightloop X,"New: arrival texts. Customers get a 30-minute window when the technician leaves for the job, and an update if the job before runs over. On for everyone today. https://brightloop.example/changelog/arrival-texts?utm_source=x&utm_medium=social&utm_campaign=2026-11-arrival-texts","Changelog entry 'Arrival texts' (Notion, 2026-11-09) + screen recording of the text arriving on a phone",2026-11 Arrival texts,maya@brightloop.example
+Feature - arrival texts (NL),To approve,2026-11-12,Jonas LinkedIn,"De vraag die ik bij elke demo krijg: ""Kan de klant zien wanneer de monteur komt?""
+
+Vanaf deze week wel. Zodra de monteur onderweg is krijgt de klant een sms met een tijdvak van een half uur. Loopt de klus ervoor uit, dan krijgt de klant automatisch een update.
+
+Geen app voor de klant, geen extra knop voor de monteur. En een stuk minder telefoontjes naar kantoor met de vraag waar hij blijft.
+
+Benieuwd hoe het eruitziet? Stuur me een bericht, dan laat ik het je in 10 minuten zien.","Changelog entry 'Arrival texts' (Notion, 2026-11-09) + screen recording of the text arriving on a phone. Written in Dutch from the start, not translated.",2026-11 Arrival texts,jonas@brightloop.example
+Feature - arrival texts,Needs media,2026-11-13,Brightloop Instagram,"""Where is he?"" Your customers don't need to call to ask anymore.
+
+Arrival texts are live in Brightloop: a 30-minute window when the technician sets off, and an update if the job before runs late.
+
+#fieldservice #installers #smallbusiness","Changelog entry 'Arrival texts' (Notion, 2026-11-09) + screen recording of the text arriving on a phone. Needs the screen recording cut to 9:16, 15 seconds, captions on.",2026-11 Arrival texts,maya@brightloop.example
+Ep 58 - clip 3 31 noes,To approve,2026-11-16,Maya LinkedIn,"31 funds said no to our seed round.
+
+I kept a spreadsheet. 22 of the 31 gave some version of the same reason: installers don't buy software.
+
+For the first ten meetings I argued with that. Market size, digitisation of the trades, the usual slide. It didn't work, because they'd seen that slide from every vertical SaaS company that year.
+
+What worked was skipping the argument. From meeting eleven on, the first slide was our customer list with how long each one had been paying. Plumbers, electricians, heat pump installers, most of them past 18 months.
+
+Hard to say installers don't buy software when 140 of them already do.
+
+Sam and I get into this around minute 22 of The Ground Floor, episode 58.","Clip 3 (21:50-23:20), The Ground Floor episode 58. https://thegroundfloor.example/58",2026-10 Ground Floor Ep 58,maya@brightloop.example
+Ep 58 - clip 3 31 noes,Approved,2026-11-17,Maya X,31 funds passed on our seed. 22 said installers don't buy software. I stopped arguing and opened every meeting with our customer list and how long each one had been paying. Different meetings after that.,"Clip 3, The Ground Floor episode 58. https://thegroundfloor.example/58. Auto-approved (Maya X opt-in).",2026-10 Ground Floor Ep 58,maya@brightloop.example
+Review - Dekker (Jonas),Rejected,2026-11-19,Jonas LinkedIn,"Ruud from Dekker Installatietechniek left us a review last week. Their planner used to spend every Monday morning rebuilding the week on a whiteboard. Now it takes 20 minutes.
+
+I remember the first demo at Dekker. The whiteboard was right behind Ruud's chair the whole time.","Trustpilot review screenshot, Ruud Dekker (Dekker Installatietechniek), 5 stars, 2026-10-29. Ruud agreed by email on 2026-10-30 to be named. Rejected by Jonas 2026-11-02: 'I closed Dekker myself, posting their review from my account feels like bragging.' Rule added to channels/jonas-linkedin.md.",2026-11 Review Dekker,jonas@brightloop.example
+Ep 58 - clip 4 lean years,To approve,2026-11-25,Maya LinkedIn,"We ran Brightloop for almost three years on revenue and one small angel cheque before raising a seed round.
+
+People hear that and assume it was a principle. It wasn't. We tried to raise in 2024 and nobody was interested.
+
+Looking back, those years were good for us. We couldn't afford to build anything a customer hadn't asked for, so we didn't. Our first 100 customers came from Jonas driving to trade fairs and installers telling each other. When we did raise, the money went into things we already knew worked.
+
+I wouldn't recommend it as a plan. As a fallback, it's better than it sounds.","Clip 4 (34:15-35:40), The Ground Floor episode 58. https://thegroundfloor.example/58",2026-10 Ground Floor Ep 58,maya@brightloop.example
+Data - Monday moves,Draft,2026-11-26,Brightloop LinkedIn,"From our customers' schedules: on an average Monday, 2.4 jobs per technician get moved before 10am.
+
+Most of those moves start on Friday. Jobs that ran over, parts that didn't arrive, customers who cancelled by text over the weekend.
+
+The companies with the fewest Monday moves have one habit in common. Someone checks next week's jobs against the parts list on Friday afternoon. It takes about 30 minutes.","Brightloop data query 2026-11-20: jobs rescheduled per technician by weekday, 140 companies, May-Oct 2026. Draft until Maya re-checks the 2.4 figure. Chart: bar per weekday, Monday highlighted in #1F7A5A.",2026-11 Data Monday moves,maya@brightloop.example
+Data - Monday moves essay,Draft,2026-12-03,Brightloop Substack,"What 140 installers taught us about Monday mornings
+
+We looked at six months of schedules from every company using Brightloop. On an average Monday, 2.4 jobs per technician get moved before 10am. For a company with 15 technicians, that's 36 phone calls, texts or changes before the first coffee.
+
+Most of those moves start on Friday.
+
+[Draft continues: the three most common causes, what the companies with the fewest Monday moves do differently, the Friday parts check, what we're building next. Maya to finish after the data is re-checked.]",Same data query as 'Data - Monday moves'. Outline agreed with Maya 2026-11-20.,2026-11 Data Monday moves,maya@brightloop.example
+Ep 58 - clip 5 first hire,Draft,2026-12-09,Maya LinkedIn,"Sam asked me on the podcast who we hired first with the seed money. Everyone expects a senior engineer.
+
+We hired Noor. She spent six years planning jobs for an electrical contractor in Breda and learned to code in the evenings. She isn't our most experienced developer. She is the only person on the team who has rebuilt a week for 20 technicians by hand at 6:45 on a Monday, and in design reviews she catches problems the rest of us would ship.
+
+If your customers do a job most software people have never done, hire one of them early.","Clip 5 (41:00-42:10), The Ground Floor episode 58. https://thegroundfloor.example/58. Draft: Noor hasn't confirmed she's OK being named yet.",2026-10 Ground Floor Ep 58,maya@brightloop.example

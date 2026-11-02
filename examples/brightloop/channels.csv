@@ -1,0 +1,8 @@
+Name,Platform,Upload-Post user,Target ID,Post time,Timezone,Active,Manual,Channel file
+Brightloop LinkedIn,linkedin,brightloop,REPLACE_WITH_LINKEDIN_PAGE_ID,09:30,Europe/Amsterdam,checked,,channels/brightloop-linkedin.md
+Brightloop Instagram,instagram,brightloop,,12:00,Europe/Amsterdam,checked,,channels/brightloop-instagram.md
+Brightloop X,x,brightloop,,10:00,Europe/Amsterdam,checked,,channels/brightloop-x.md
+Maya LinkedIn,linkedin,maya,,08:15,Europe/Amsterdam,checked,,channels/maya-linkedin.md
+Maya X,x,maya,,17:30,Europe/Amsterdam,checked,,channels/maya-x.md
+Jonas LinkedIn,linkedin,jonas,,07:30,Europe/Amsterdam,checked,,channels/jonas-linkedin.md
+Brightloop Substack,substack,,,10:00,Europe/Amsterdam,checked,checked,channels/brightloop-substack.md
